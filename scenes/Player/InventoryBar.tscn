@@ -1,0 +1,93 @@
+[gd_scene load_steps=16 format=3 uid="uid://cwe2ruhtjjaxe"]
+
+[ext_resource type="Texture2D" uid="uid://gi04qaptehft" path="res://assets/Sprites/UI/Inventory/Inventory_Bar.png" id="1_aoc3e"]
+[ext_resource type="Texture2D" uid="uid://dpcmrahfwo4sw" path="res://assets/Sprites/UI/Inventory/SelectedInventory/selected_slot_1.png" id="1_cblfy"]
+[ext_resource type="Script" path="res://scenes/Player/InventoryBar.gd" id="1_s2p7k"]
+[ext_resource type="Resource" uid="uid://b1vco66yitpn4" path="res://tres/PlayerInventory.tres" id="2_euy3v"]
+[ext_resource type="Texture2D" uid="uid://vihplba30ls4" path="res://assets/Sprites/UI/Inventory/SelectedInventory/selected_slot_2.png" id="3_m564p"]
+[ext_resource type="Texture2D" uid="uid://daqe3s3dg1j8e" path="res://assets/Sprites/UI/Inventory/SelectedInventory/selected_slot_3.png" id="4_dilw3"]
+[ext_resource type="Texture2D" uid="uid://bqr7d4ipygr8v" path="res://assets/Sprites/UI/Inventory/SelectedInventory/selected_slot_4.png" id="5_7rjse"]
+[ext_resource type="Texture2D" uid="uid://dmqf2qswf3gk2" path="res://assets/Sprites/UI/Inventory/SelectedInventory/selected_slot_5.png" id="6_dwc2v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7cs5"]
+atlas = ExtResource("1_cblfy")
+region = Rect2(0, 0, 203, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfarm"]
+atlas = ExtResource("3_m564p")
+region = Rect2(0, 0, 203, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmbxb"]
+atlas = ExtResource("4_dilw3")
+region = Rect2(0, 0, 203, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ye528"]
+atlas = ExtResource("5_7rjse")
+region = Rect2(0, 0, 203, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3qvuw"]
+atlas = ExtResource("6_dwc2v")
+region = Rect2(0, 0, 203, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76fk5"]
+atlas = ExtResource("1_aoc3e")
+region = Rect2(0, 0, 203, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4it2f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7cs5")
+}],
+"loop": true,
+"name": &"Slot1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfarm")
+}],
+"loop": true,
+"name": &"Slot2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmbxb")
+}],
+"loop": true,
+"name": &"Slot3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ye528")
+}],
+"loop": true,
+"name": &"Slot4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3qvuw")
+}],
+"loop": true,
+"name": &"Slot5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76fk5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="InventoryBar" type="Node2D"]
+script = ExtResource("1_s2p7k")
+inventory = ExtResource("2_euy3v")
+
+[node name="InventoryFrame" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4it2f")
+animation = &"Slot5"

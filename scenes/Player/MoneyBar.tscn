@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://shi81id6fyeu"]
+
+[ext_resource type="Texture2D" uid="uid://lyht0yg08ukx" path="res://assets/Sprites/UI/MoneyBar.png" id="1_gu7ea"]
+[ext_resource type="Script" path="res://scenes/Player/MoneyBar.gd" id="1_qpjtn"]
+[ext_resource type="Resource" uid="uid://dwkcpverg03fs" path="res://tres/PlayerStats.tres" id="2_4qvwd"]
+[ext_resource type="FontFile" uid="uid://cu5w45rcnjrwx" path="res://assets/Fonts/Daydream.ttf" id="4_vj3m6"]
+
+[node name="MoneyBar" type="Node2D"]
+script = ExtResource("1_qpjtn")
+stats = ExtResource("2_4qvwd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_gu7ea")
+
+[node name="Amount" type="RichTextLabel" parent="."]
+offset_left = -21.0
+offset_top = -8.0
+offset_right = 33.0
+offset_bottom = 8.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_vj3m6")
+theme_override_font_sizes/normal_font_size = 11
+text = "test"
+scroll_active = false
+autowrap_mode = 0
+shortcut_keys_enabled = false

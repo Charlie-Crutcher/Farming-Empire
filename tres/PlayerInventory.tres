@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Inventory" load_steps=2 format=3 uid="uid://b1vco66yitpn4"]
+
+[ext_resource type="Script" path="res://scripts/Inventory.gd" id="1_uu2lg"]
+
+[resource]
+script = ExtResource("1_uu2lg")
+player_stamina = 51.0
+player_health = 100.0
+player_damage = 10.0
+player_money = 200

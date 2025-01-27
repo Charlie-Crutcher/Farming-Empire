@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Stats" load_steps=2 format=3 uid="uid://dwkcpverg03fs"]
+
+[ext_resource type="Script" path="res://scripts/Stats.gd" id="1_of627"]
+
+[resource]
+script = ExtResource("1_of627")
+player_stamina = 51.0
+player_health = 100.0
+player_damage = 10.0
+player_money = 200
