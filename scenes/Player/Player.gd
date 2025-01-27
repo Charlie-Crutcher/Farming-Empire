@@ -8,10 +8,18 @@ class_name Entity
 #Animations & Sprites
 @onready var animation_sprite = $AnimatedSprite2D
 @onready var tool_sprite = $ToolSprite2D
+@onready var enter_text = $EnterText
+@onready var exit_text = $ExitText
+@onready var camera = $Camera2D
+@onready var collision_left = $ActionArea/ActionCollisionLeft
+@onready var collision_right = $ActionArea/ActionCollisionRight
+@onready var collision_up = $ActionArea/ActionCollisionTop
+@onready var collision_down = $ActionArea/ActionCollisionBottom
 
 #Audio
 @onready var footsteps_sfx : AudioStreamPlayer = $Footsteps
 @onready var hit_sfx : AudioStreamPlayer = $Hit
+@onready var hotbar_switch_sfx : AudioStreamPlayer = $HotbarSwitch
 
 #Timer
 @onready var timer: Timer = $Timer
@@ -30,6 +38,11 @@ var inventory_slot_2
 var inventory_slot_3
 var inventory_slot_4
 var inventory_slot_5
+var inventory_slot_6
+var inventory_slot_7
+var inventory_slot_8
+var inventory_slot_9
+var inventory_slot_10
 
 var selected_inventory_slot
 
@@ -39,6 +52,7 @@ var player_action_right
 var player_action_up
 var player_action_down
 var player_is_mining : bool = false
+var enter_pressed
 
 #StateMachine Variable
 var main_sm: LimboHSM
@@ -61,6 +75,7 @@ func _physics_process(_delta):
 	player_action_up = Input.is_action_pressed("ui_up")
 	player_action_down = Input.is_action_pressed("ui_down")
 	is_sprinting = Input.is_action_pressed("shift")
+	enter_pressed = Input.is_action_pressed("ui_accept")
 	
 	#Debug menu
 	debug_menu = Input.is_action_just_pressed("debug")
@@ -76,17 +91,49 @@ func _physics_process(_delta):
 	inventory_slot_3 = Input.is_action_just_pressed("number_3")
 	inventory_slot_4 = Input.is_action_just_pressed("number_4")
 	inventory_slot_5 = Input.is_action_just_pressed("number_5")
+	inventory_slot_6 = Input.is_action_just_pressed("number_6")
+	inventory_slot_7 = Input.is_action_just_pressed("number_7")
+	inventory_slot_8 = Input.is_action_just_pressed("number_8")
+	inventory_slot_9 = Input.is_action_just_pressed("number_9")
+	inventory_slot_10 = Input.is_action_just_pressed("number_0")
+	
+	if Input.is_action_just_pressed("scroll_up"):
+		inventory.selected_slot +=1
+		hotbar_switch_sfx.play()
+	if Input.is_action_just_pressed("scroll_down"):
+		inventory.selected_slot -=1
+		hotbar_switch_sfx.play()
 	
 	if inventory_slot_1:
 		inventory.select_inventory_slot_1()
+		hotbar_switch_sfx.play()
 	elif inventory_slot_2:
 		inventory.select_inventory_slot_2()
+		hotbar_switch_sfx.play()
 	elif inventory_slot_3:
 		inventory.select_inventory_slot_3()
+		hotbar_switch_sfx.play()
 	elif inventory_slot_4:
 		inventory.select_inventory_slot_4()
+		hotbar_switch_sfx.play()
 	elif inventory_slot_5:
 		inventory.select_inventory_slot_5()
+		hotbar_switch_sfx.play()
+	elif inventory_slot_6:
+		inventory.select_inventory_slot_6()
+		hotbar_switch_sfx.play()
+	elif inventory_slot_7:
+		inventory.select_inventory_slot_7()
+		hotbar_switch_sfx.play()
+	elif inventory_slot_8:
+		inventory.select_inventory_slot_8()
+		hotbar_switch_sfx.play()
+	elif inventory_slot_9:
+		inventory.select_inventory_slot_9()
+		hotbar_switch_sfx.play()
+	elif inventory_slot_10:
+		inventory.select_inventory_slot_10()
+		hotbar_switch_sfx.play()
 	
 	#Adds movement to the player
 	move_and_slide()
@@ -138,7 +185,6 @@ func idle_update(_delta : float):
 	if !tool_sprite.is_playing() and !player_is_mining:
 		if player_action_left or player_action_right or player_action_up or player_action_down:
 			main_sm.dispatch(&"to_pickaxe")
-
 func walk_x_start():
 	print("StateMachine: walk_x_state")
 	footsteps_sfx.play()
@@ -198,6 +244,7 @@ func pickaxe_update(_delta : float):
 	velocity.y = 0
 	#Directional Sprite Movement Based on player input
 	if player_action_left and !player_is_mining:
+		collision_left.disabled = false
 		stats.reduce_stamina_1(1.0)
 		player_is_mining = true
 		tool_sprite.flip_h = true
@@ -206,6 +253,7 @@ func pickaxe_update(_delta : float):
 		tool_sprite.play("pickaxe_horizontal")
 		animation_sprite.play("mine_horizontal")
 	elif player_action_right and !player_is_mining:
+		collision_right.disabled = false
 		stats.reduce_stamina_1(1.0)
 		player_is_mining = true
 		tool_sprite.flip_h = false
@@ -214,6 +262,7 @@ func pickaxe_update(_delta : float):
 		tool_sprite.play("pickaxe_horizontal")
 		animation_sprite.play("mine_horizontal")
 	elif player_action_up and !player_is_mining:
+		collision_up.disabled = false
 		stats.reduce_stamina_1(1.0)
 		player_is_mining = true
 		tool_sprite.flip_h = false
@@ -222,6 +271,7 @@ func pickaxe_update(_delta : float):
 		tool_sprite.play("pickaxe_up")
 		animation_sprite.play("mine_up")
 	elif player_action_down and !player_is_mining:
+		collision_down.disabled = false
 		stats.reduce_stamina_1(1.0)
 		player_is_mining = true
 		tool_sprite.flip_h = false
@@ -230,11 +280,28 @@ func pickaxe_update(_delta : float):
 		tool_sprite.play("pickaxe_down")
 		animation_sprite.play("mine_down")
 	if timer.is_stopped():
+		collision_left.disabled = true
+		collision_right.disabled = true
+		collision_up.disabled = true
+		collision_down.disabled = true
 		player_is_mining = false
 		hit_sfx.stop()
 		tool_sprite.hide()
+		tool_sprite.stop()
 		main_sm.dispatch(&"state_ended")
 #----------End of Movement State Functions----------#
+
+func show_enter_text():
+	enter_text.show()
+
+func hide_enter_text():
+	enter_text.hide()
+
+func enable_player_camera():
+	camera.enabled = true
+
+func disable_player_camera():
+	camera.enabled = false
 
 #-----Timer Timeout Function-----#
 func _on_timer_timeout():

@@ -18,7 +18,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cahmp"]
-size = Vector2(17, 16)
+size = Vector2(14, 16)
 
 [node name="BigFenceRightBottom" type="StaticBody2D"]
 
@@ -26,5 +26,4 @@ size = Vector2(17, 16)
 sprite_frames = SubResource("SpriteFrames_i8b2e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_cahmp")

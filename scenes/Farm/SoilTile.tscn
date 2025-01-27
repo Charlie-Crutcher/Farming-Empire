@@ -1,3 +1,46 @@
-[gd_scene format=3 uid="uid://paoigy38sohu"]
+[gd_scene load_steps=8 format=3 uid="uid://paoigy38sohu"]
 
-[node name="SoilTile" type="Node2D"]
+[ext_resource type="Script" path="res://scenes/Farm/SoilTile.gd" id="1_666y0"]
+[ext_resource type="Texture2D" uid="uid://csiyd4nm2f3br" path="res://assets/Sprites/Tiles/FarmLand/FarmLand_Tile.png" id="1_bnj6g"]
+[ext_resource type="Texture2D" uid="uid://bgavryvigdlb7" path="res://assets/Sprites/Tiles/Grass/Path_Middle.png" id="2_fbnm4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_00blk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2dqo"]
+atlas = ExtResource("1_bnj6g")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2yxf"]
+atlas = ExtResource("2_fbnm4")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1clcr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c2dqo")
+}],
+"loop": true,
+"name": &"tilled",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2yxf")
+}],
+"loop": true,
+"name": &"untilled",
+"speed": 5.0
+}]
+
+[node name="SoilTile" type="Area2D"]
+script = ExtResource("1_666y0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_00blk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1clcr")
+animation = &"untilled"
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

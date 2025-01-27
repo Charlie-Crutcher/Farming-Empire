@@ -1,13 +1,22 @@
-[gd_scene load_steps=16 format=3 uid="uid://cwe2ruhtjjaxe"]
+[gd_scene load_steps=26 format=3 uid="uid://cwe2ruhtjjaxe"]
 
 [ext_resource type="Texture2D" uid="uid://gi04qaptehft" path="res://assets/Sprites/UI/Inventory/Inventory_Bar.png" id="1_aoc3e"]
 [ext_resource type="Texture2D" uid="uid://dpcmrahfwo4sw" path="res://assets/Sprites/UI/Inventory/SelectedInventory/selected_slot_1.png" id="1_cblfy"]
 [ext_resource type="Script" path="res://scenes/Player/InventoryBar.gd" id="1_s2p7k"]
 [ext_resource type="Resource" uid="uid://b1vco66yitpn4" path="res://tres/PlayerInventory.tres" id="2_euy3v"]
+[ext_resource type="Texture2D" uid="uid://blh4he4rslw5o" path="res://assets/Sprites/UI/Inventory/SelectedInventory/selected_slot_0.png" id="3_m2kl1"]
 [ext_resource type="Texture2D" uid="uid://vihplba30ls4" path="res://assets/Sprites/UI/Inventory/SelectedInventory/selected_slot_2.png" id="3_m564p"]
 [ext_resource type="Texture2D" uid="uid://daqe3s3dg1j8e" path="res://assets/Sprites/UI/Inventory/SelectedInventory/selected_slot_3.png" id="4_dilw3"]
 [ext_resource type="Texture2D" uid="uid://bqr7d4ipygr8v" path="res://assets/Sprites/UI/Inventory/SelectedInventory/selected_slot_4.png" id="5_7rjse"]
 [ext_resource type="Texture2D" uid="uid://dmqf2qswf3gk2" path="res://assets/Sprites/UI/Inventory/SelectedInventory/selected_slot_5.png" id="6_dwc2v"]
+[ext_resource type="Texture2D" uid="uid://bcbjc7xniko5b" path="res://assets/Sprites/UI/Inventory/SelectedInventory/selected_slot_6.png" id="9_xgxb2"]
+[ext_resource type="Texture2D" uid="uid://b75sk0xuhlt5r" path="res://assets/Sprites/UI/Inventory/SelectedInventory/selected_slot_7.png" id="10_erhs4"]
+[ext_resource type="Texture2D" uid="uid://dtnchpqxprtsr" path="res://assets/Sprites/UI/Inventory/SelectedInventory/selected_slot_8.png" id="11_ufn7d"]
+[ext_resource type="Texture2D" uid="uid://d32v7mb7kq4x8" path="res://assets/Sprites/UI/Inventory/SelectedInventory/selected_slot_9.png" id="12_13og6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbj6t"]
+atlas = ExtResource("3_m2kl1")
+region = Rect2(0, 0, 203, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a7cs5"]
 atlas = ExtResource("1_cblfy")
@@ -29,12 +38,36 @@ region = Rect2(0, 0, 203, 32)
 atlas = ExtResource("6_dwc2v")
 region = Rect2(0, 0, 203, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_rywbc"]
+atlas = ExtResource("9_xgxb2")
+region = Rect2(0, 0, 203, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fb41c"]
+atlas = ExtResource("10_erhs4")
+region = Rect2(0, 0, 203, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ku2k"]
+atlas = ExtResource("11_ufn7d")
+region = Rect2(0, 0, 203, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2hl8"]
+atlas = ExtResource("12_13og6")
+region = Rect2(0, 0, 203, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_76fk5"]
 atlas = ExtResource("1_aoc3e")
 region = Rect2(0, 0, 203, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4it2f"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbj6t")
+}],
+"loop": true,
+"name": &"Slot0",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_a7cs5")
@@ -77,6 +110,38 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_rywbc")
+}],
+"loop": true,
+"name": &"Slot6",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fb41c")
+}],
+"loop": true,
+"name": &"Slot7",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ku2k")
+}],
+"loop": true,
+"name": &"Slot8",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2hl8")
+}],
+"loop": true,
+"name": &"Slot9",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_76fk5")
 }],
 "loop": true,
@@ -90,4 +155,4 @@ inventory = ExtResource("2_euy3v")
 
 [node name="InventoryFrame" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4it2f")
-animation = &"Slot5"
+animation = &"Slot0"

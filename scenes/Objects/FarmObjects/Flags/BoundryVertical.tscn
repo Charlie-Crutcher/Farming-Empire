@@ -1,0 +1,81 @@
+[gd_scene load_steps=12 format=3 uid="uid://bvjsqovp2487y"]
+
+[ext_resource type="Texture2D" uid="uid://ck31r7ngofq7w" path="res://assets/Sprites/Outdoor decoration/Outdoor_Decor_Animations/Other_Animations/Pole_and_Bunting_2_Anim.png" id="1_bpjd5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emx2n"]
+atlas = ExtResource("1_bpjd5")
+region = Rect2(0, 0, 16, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_akhmd"]
+atlas = ExtResource("1_bpjd5")
+region = Rect2(16, 0, 16, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bti66"]
+atlas = ExtResource("1_bpjd5")
+region = Rect2(32, 0, 16, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aww0o"]
+atlas = ExtResource("1_bpjd5")
+region = Rect2(48, 0, 16, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nd71s"]
+atlas = ExtResource("1_bpjd5")
+region = Rect2(64, 0, 16, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ne4i7"]
+atlas = ExtResource("1_bpjd5")
+region = Rect2(80, 0, 16, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rsxi5"]
+atlas = ExtResource("1_bpjd5")
+region = Rect2(96, 0, 16, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0u7ec"]
+atlas = ExtResource("1_bpjd5")
+region = Rect2(112, 0, 16, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wfna8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emx2n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_akhmd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bti66")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aww0o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nd71s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ne4i7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rsxi5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0u7ec")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_emc2h"]
+size = Vector2(20, 58)
+
+[node name="BoundryVertical" type="StaticBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wfna8")
+autoplay = "default"
+frame_progress = 0.04963
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_emc2h")

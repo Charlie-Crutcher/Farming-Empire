@@ -18,7 +18,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bku1q"]
-size = Vector2(17, 13)
+size = Vector2(15, 9)
 
 [node name="BigFenceRight" type="StaticBody2D"]
 
@@ -26,5 +26,5 @@ size = Vector2(17, 13)
 sprite_frames = SubResource("SpriteFrames_40v1j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 1.5)
+position = Vector2(-0.5, 3.5)
 shape = SubResource("RectangleShape2D_bku1q")

@@ -27,3 +27,23 @@ func select_inventory_slot_4():
 func select_inventory_slot_5():
 	print("User Selected Slot 5")
 	selected_slot = 4
+
+func select_inventory_slot_6():
+	print("User Selected Slot 6")
+	selected_slot = 5
+	
+func select_inventory_slot_7():
+	print("User Selected Slot 7")
+	selected_slot = 6
+
+func select_inventory_slot_8():
+	print("User Selected Slot 8")
+	selected_slot = 7
+	
+func select_inventory_slot_9():
+	print("User Selected Slot 9")
+	selected_slot = 8
+
+func select_inventory_slot_10():
+	print("User Selected Slot 10")
+	selected_slot = 9

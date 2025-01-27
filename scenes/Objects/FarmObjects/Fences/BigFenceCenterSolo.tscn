@@ -18,7 +18,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qvikl"]
-size = Vector2(18, 16)
+size = Vector2(14, 16)
 
 [node name="StaticBody2D" type="StaticBody2D"]
 
