@@ -16,6 +16,8 @@ class_name Entity
 @onready var collision_right = $ActionArea/ActionCollisionRight
 @onready var collision_up = $ActionArea/ActionCollisionTop
 @onready var collision_down = $ActionArea/ActionCollisionBottom
+@onready var dialogue_area = $DialogueArea
+var terry_tips_dialgue = load("res://dialogue/terry_tips.dialogue")
 
 #Audio
 @onready var footsteps_sfx : AudioStreamPlayer = $Footsteps
@@ -67,6 +69,9 @@ func _ready():
 	initiate_state_machine()
 #----------End of Ready Function----------#
 
+func _unhandled_input(_event : InputEvent) -> void:
+	if Input.is_action_just_pressed("ui_accept"):
+		DialogueManager.show_dialogue_balloon(terry_tips_dialgue, "start")
 #----------Start of Physics Process Function----------#
 func _physics_process(_delta):
 	#Checking for movement and applying gravity

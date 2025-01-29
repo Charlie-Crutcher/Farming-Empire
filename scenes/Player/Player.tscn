@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://cwfwo5nreqf1f" path="res://scenes/Player/EnergyBar.tscn" id="7_fpkas"]
 [ext_resource type="AudioStream" uid="uid://pitaschqnyhh" path="res://assets/Sound/SFX/hotbar_switch.wav" id="8_wrt3f"]
 [ext_resource type="PackedScene" uid="uid://shi81id6fyeu" path="res://scenes/Player/MoneyBar.tscn" id="9_71jm7"]
-[ext_resource type="PackedScene" uid="uid://cwe2ruhtjjaxe" path="res://scenes/Player/InventoryBar.tscn" id="10_2oapp"]
 [ext_resource type="FontFile" uid="uid://cu5w45rcnjrwx" path="res://assets/Fonts/Daydream.ttf" id="12_jmxef"]
 [ext_resource type="PackedScene" uid="uid://bl5frixsxindd" path="res://tres/Inventory/inventory_ui.tscn" id="15_h8fv7"]
 
@@ -507,7 +506,10 @@ stream_0/stream = ExtResource("6_3h5tr")
 stream_0/weight = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0sj44"]
-radius = 14.0
+radius = 11.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3n2vk"]
+radius = 56.0089
 
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -563,11 +565,6 @@ z_as_relative = false
 position = Vector2(866, -509)
 scale = Vector2(2.5, 2.5)
 
-[node name="InventoryBar" parent="." instance=ExtResource("10_2oapp")]
-z_index = 100
-position = Vector2(0, 492)
-scale = Vector2(3, 3)
-
 [node name="EnterText" type="RichTextLabel" parent="."]
 visible = false
 z_index = 999
@@ -593,28 +590,36 @@ text = "Press 'E' To Enter"
 [node name="ActionArea" type="Area2D" parent="."]
 
 [node name="ActionCollisionRight" type="CollisionShape2D" parent="ActionArea"]
-position = Vector2(46, 13)
+position = Vector2(47, 1)
 shape = SubResource("CircleShape2D_0sj44")
 disabled = true
 
 [node name="ActionCollisionBottom" type="CollisionShape2D" parent="ActionArea"]
-position = Vector2(-1, 52)
+position = Vector2(0, 40)
 shape = SubResource("CircleShape2D_0sj44")
 disabled = true
 
 [node name="ActionCollisionTop" type="CollisionShape2D" parent="ActionArea"]
-position = Vector2(-2, -26)
+position = Vector2(-1, -38)
 shape = SubResource("CircleShape2D_0sj44")
 disabled = true
 
 [node name="ActionCollisionLeft" type="CollisionShape2D" parent="ActionArea"]
-position = Vector2(-49, 14)
+position = Vector2(-48, 2)
 shape = SubResource("CircleShape2D_0sj44")
 disabled = true
 
 [node name="InventoryUI" parent="." instance=ExtResource("15_h8fv7")]
+visible = false
 offset_left = 2.0
 offset_right = 2.0
 scale = Vector2(5, 5)
+
+[node name="DialogueArea" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueArea"]
+shape = SubResource("CircleShape2D_3n2vk")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://b6r4khg8r67oc"
+path="res://.godot/imported/terry_tips.dialogue-4124a6969be09799c405c4e9c5dccbb5.tres"
+
+[deps]
+
+source_file="res://dialogue/terry_tips.dialogue"
+dest_files=["res://.godot/imported/terry_tips.dialogue-4124a6969be09799c405c4e9c5dccbb5.tres"]
+
+[params]
+
+defaults=true

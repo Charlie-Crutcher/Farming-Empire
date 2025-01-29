@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://cumpssmaaab41"]
+[gd_scene load_steps=66 format=3 uid="uid://cumpssmaaab41"]
 
 [ext_resource type="Script" path="res://scenes/Levels/DebugLevel.gd" id="1_fd2mu"]
 [ext_resource type="TileSet" uid="uid://gvji6cp27siv" path="res://tres/TileMaps/grass_tilemap.tres" id="1_m0jfg"]
@@ -31,7 +31,11 @@
 [ext_resource type="PackedScene" uid="uid://b3la1v3nlmk68" path="res://scenes/Objects/Buildings/PlayerStarterHouse.tscn" id="29_0pxkt"]
 [ext_resource type="PackedScene" uid="uid://caj684gs7paf5" path="res://scenes/Objects/Buildings/to_house.tscn" id="30_n0nkd"]
 [ext_resource type="PackedScene" uid="uid://bvjsqovp2487y" path="res://scenes/Objects/FarmObjects/Flags/BoundryVertical.tscn" id="30_sd2l3"]
-[ext_resource type="AudioStream" uid="uid://c612e0u4qclok" path="res://assets/Sound/Music/Chris_Chan_Sonichu_The_Video_Game_-_So_Need_a_Cute_Girl.mp3" id="31_isyry"]
+[ext_resource type="PackedScene" uid="uid://dw6ipvgd0tp16" path="res://scenes/NPCs/terry_tips.tscn" id="31_4ltg5"]
+[ext_resource type="PackedScene" uid="uid://blcci58k6qis4" path="res://scenes/Objects/FarmObjects/Benches/wooden_bench.tscn" id="32_8ikwt"]
+[ext_resource type="PackedScene" uid="uid://bi7sonjnnctwe" path="res://Resources/start_dialogue.tscn" id="32_acrlg"]
+[ext_resource type="AudioStream" uid="uid://dgeoxjsakbm12" path="res://assets/Sound/Music/nobody_knows_you_when_youre_down_and_out.wav" id="32_l07dq"]
+[ext_resource type="Resource" uid="uid://b6r4khg8r67oc" path="res://dialogue/terry_tips.dialogue" id="32_rugol"]
 [ext_resource type="PackedScene" uid="uid://b0bytxn5bjy04" path="res://scenes/Objects/FarmObjects/Mushrooms/Mushroom01.tscn" id="33_ecc87"]
 [ext_resource type="PackedScene" uid="uid://cl1n1xox5utvl" path="res://scenes/Objects/FarmObjects/Grass/Grass01.tscn" id="34_0ajp6"]
 [ext_resource type="PackedScene" uid="uid://bougyji706u82" path="res://scenes/Objects/FarmObjects/Grass/Grass02.tscn" id="35_3gia4"]
@@ -1051,16 +1055,22 @@ sources/10 = SubResource("TileSetAtlasSource_c5dap")
 sources/11 = SubResource("TileSetAtlasSource_cwqb6")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vn4ln"]
-size = Vector2(593, 170)
+size = Vector2(593, 181)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ms0do"]
 size = Vector2(61, 447)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g8k25"]
-size = Vector2(1158, 170)
+size = Vector2(1158, 178)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bt8yq"]
 size = Vector2(685.5, 914)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eh2cj"]
+size = Vector2(780, 188.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqyev"]
+size = Vector2(60, 84)
 
 [node name="DebugLevel" type="Node2D"]
 script = ExtResource("1_fd2mu")
@@ -1124,7 +1134,7 @@ layer_0/tile_data = PackedInt32Array(458730, 393217, 1, 262123, 327681, 0, 32765
 [node name="Cliffs" type="StaticBody2D" parent="Collision"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/Cliffs"]
-position = Vector2(491.5, -292)
+position = Vector2(491.5, -286.5)
 shape = SubResource("RectangleShape2D_vn4ln")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Collision/Cliffs"]
@@ -1132,12 +1142,24 @@ position = Vector2(228.5, 16.5)
 shape = SubResource("RectangleShape2D_ms0do")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Collision/Cliffs"]
-position = Vector2(-381, 155)
+position = Vector2(-381, 159)
 shape = SubResource("RectangleShape2D_g8k25")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Collision/Cliffs"]
 position = Vector2(-157.75, 1552)
 shape = SubResource("RectangleShape2D_bt8yq")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Collision/Cliffs"]
+position = Vector2(1334, -286.25)
+shape = SubResource("RectangleShape2D_eh2cj")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Collision/Cliffs"]
+position = Vector2(2054, -97.125)
+shape = SubResource("RectangleShape2D_eh2cj")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Collision/Cliffs"]
+position = Vector2(1694, -221)
+shape = SubResource("RectangleShape2D_dqyev")
 
 [node name="EnvironmentalObjects" type="Node2D" parent="."]
 z_index = 1
@@ -1536,6 +1558,24 @@ position = Vector2(-32, 0)
 position = Vector2(1935, 408)
 scale = Vector2(3, 3)
 
+[node name="TerryTips" parent="EnvironmentalObjects" instance=ExtResource("31_4ltg5")]
+position = Vector2(216, 243)
+scale = Vector2(3, 3)
+dialogue_resource = ExtResource("32_rugol")
+
+[node name="StartDialogue" parent="EnvironmentalObjects/TerryTips" instance=ExtResource("32_acrlg")]
+
+[node name="ColorRect" type="ColorRect" parent="EnvironmentalObjects"]
+offset_left = 89.0
+offset_top = 207.0
+offset_right = 179.0
+offset_bottom = 253.0
+color = Color(0, 0, 0, 0.235294)
+
+[node name="WoodenBench" parent="EnvironmentalObjects" instance=ExtResource("32_8ikwt")]
+position = Vector2(135, 242)
+scale = Vector2(3, 3)
+
 [node name="InteractableObjects" type="Node2D" parent="."]
 
 [node name="SoilTiles" type="Node2D" parent="InteractableObjects"]
@@ -1561,10 +1601,50 @@ scale = Vector2(3, 3)
 position = Vector2(1440, 576)
 scale = Vector2(3, 3)
 
+[node name="SoilTile6" parent="InteractableObjects/SoilTiles" instance=ExtResource("18_y8w0c")]
+position = Vector2(1104, 674)
+scale = Vector2(3, 3)
+
+[node name="SoilTile7" parent="InteractableObjects/SoilTiles" instance=ExtResource("18_y8w0c")]
+position = Vector2(1188, 674)
+scale = Vector2(3, 3)
+
+[node name="SoilTile8" parent="InteractableObjects/SoilTiles" instance=ExtResource("18_y8w0c")]
+position = Vector2(1273, 674)
+scale = Vector2(3, 3)
+
+[node name="SoilTile9" parent="InteractableObjects/SoilTiles" instance=ExtResource("18_y8w0c")]
+position = Vector2(1358, 674)
+scale = Vector2(3, 3)
+
+[node name="SoilTile10" parent="InteractableObjects/SoilTiles" instance=ExtResource("18_y8w0c")]
+position = Vector2(1440, 674)
+scale = Vector2(3, 3)
+
+[node name="SoilTile11" parent="InteractableObjects/SoilTiles" instance=ExtResource("18_y8w0c")]
+position = Vector2(1104, 768)
+scale = Vector2(3, 3)
+
+[node name="SoilTile12" parent="InteractableObjects/SoilTiles" instance=ExtResource("18_y8w0c")]
+position = Vector2(1188, 768)
+scale = Vector2(3, 3)
+
+[node name="SoilTile13" parent="InteractableObjects/SoilTiles" instance=ExtResource("18_y8w0c")]
+position = Vector2(1273, 768)
+scale = Vector2(3, 3)
+
+[node name="SoilTile14" parent="InteractableObjects/SoilTiles" instance=ExtResource("18_y8w0c")]
+position = Vector2(1358, 768)
+scale = Vector2(3, 3)
+
+[node name="SoilTile15" parent="InteractableObjects/SoilTiles" instance=ExtResource("18_y8w0c")]
+position = Vector2(1440, 768)
+scale = Vector2(3, 3)
+
 [node name="SFX" type="Node" parent="."]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("31_isyry")
+stream = ExtResource("32_l07dq")
 autoplay = true
 
 [node name="AnimatedObjects" type="Node2D" parent="."]

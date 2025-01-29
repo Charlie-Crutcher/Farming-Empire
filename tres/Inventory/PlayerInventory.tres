@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="Inventory" load_steps=3 format=3 uid="uid://b1vco66yitpn4"]
+[gd_resource type="Resource" script_class="Inventory" load_steps=5 format=3 uid="uid://b1vco66yitpn4"]
 
 [ext_resource type="Resource" uid="uid://cidanha7cnmia" path="res://tres/Inventory/Tools/Pickaxe.tres" id="1_cjtxd"]
 [ext_resource type="Script" path="res://scripts/Inventory.gd" id="1_uu2lg"]
+[ext_resource type="Resource" uid="uid://16wnf5e86qvw" path="res://tres/Inventory/Tools/Hoe.tres" id="2_2s3xj"]
+[ext_resource type="Resource" uid="uid://8eduf7qoyvc2" path="res://tres/Inventory/Tools/Axe.tres" id="3_m2tjd"]
 
 [resource]
 script = ExtResource("1_uu2lg")
-items = Array[Resource("res://scripts/Item.gd")]([ExtResource("1_cjtxd"), null, null, null, null, ExtResource("1_cjtxd"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+items = Array[Resource("res://scripts/Item.gd")]([ExtResource("1_cjtxd"), ExtResource("2_2s3xj"), ExtResource("3_m2tjd"), ExtResource("1_cjtxd"), null, null, null, null, null, ExtResource("2_2s3xj"), null, null, null, null, null, null, null, null, null, null, null, null])
 selected_slot = 0
 inventory_open = false

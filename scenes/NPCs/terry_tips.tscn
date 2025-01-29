@@ -1,0 +1,69 @@
+[gd_scene load_steps=11 format=3 uid="uid://dw6ipvgd0tp16"]
+
+[ext_resource type="Script" path="res://scenes/NPCs/terry_tips.gd" id="1_t5y3x"]
+[ext_resource type="Texture2D" uid="uid://by1yted53frga" path="res://assets/Sprites/NPCs/TerryTips.png" id="1_wgask"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3er8k"]
+atlas = ExtResource("1_wgask")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0g01r"]
+atlas = ExtResource("1_wgask")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vpv7"]
+atlas = ExtResource("1_wgask")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1s4a"]
+atlas = ExtResource("1_wgask")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60h14"]
+atlas = ExtResource("1_wgask")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgal1"]
+atlas = ExtResource("1_wgask")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v1ont"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3er8k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0g01r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vpv7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l1s4a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60h14")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgal1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gu7th"]
+size = Vector2(17, 14)
+
+[node name="TerryTips" type="CharacterBody2D"]
+script = ExtResource("1_t5y3x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_v1ont")
+autoplay = "default"
+frame_progress = 0.204647
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 4)
+shape = SubResource("RectangleShape2D_gu7th")
