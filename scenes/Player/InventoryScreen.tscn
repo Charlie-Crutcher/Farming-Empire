@@ -1,0 +1,189 @@
+[gd_scene load_steps=19 format=3 uid="uid://bqwm8txv645gp"]
+
+[ext_resource type="Script" path="res://scenes/Player/InventoryScreen.gd" id="1_7v45n"]
+[ext_resource type="Resource" uid="uid://b1vco66yitpn4" path="res://tres/Inventory/PlayerInventory.tres" id="2_c4aci"]
+[ext_resource type="Texture2D" uid="uid://coexwdwqypghm" path="res://assets/Sprites/UI/Inventory/InventoryScreen.png" id="3_mknpj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8cuem"]
+atlas = ExtResource("3_mknpj")
+region = Rect2(0, 0, 203, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v86tn"]
+atlas = ExtResource("3_mknpj")
+region = Rect2(203, 0, 203, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0uim2"]
+atlas = ExtResource("3_mknpj")
+region = Rect2(406, 0, 203, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ydpm"]
+atlas = ExtResource("3_mknpj")
+region = Rect2(609, 0, 203, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yd6k1"]
+atlas = ExtResource("3_mknpj")
+region = Rect2(812, 0, 203, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rj1fq"]
+atlas = ExtResource("3_mknpj")
+region = Rect2(1015, 0, 203, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_73jx2"]
+atlas = ExtResource("3_mknpj")
+region = Rect2(1218, 0, 203, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3c6oh"]
+atlas = ExtResource("3_mknpj")
+region = Rect2(0, 117, 203, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_33ap3"]
+atlas = ExtResource("3_mknpj")
+region = Rect2(203, 117, 203, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7r4r"]
+atlas = ExtResource("3_mknpj")
+region = Rect2(406, 117, 203, 117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_43isp"]
+atlas = ExtResource("3_mknpj")
+region = Rect2(609, 585, 203, 117)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qysq6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8cuem")
+}],
+"loop": true,
+"name": &"hotbar_01",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v86tn")
+}],
+"loop": true,
+"name": &"hotbar_02",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0uim2")
+}],
+"loop": true,
+"name": &"hotbar_03",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ydpm")
+}],
+"loop": true,
+"name": &"hotbar_04",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yd6k1")
+}],
+"loop": true,
+"name": &"hotbar_05",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rj1fq")
+}],
+"loop": true,
+"name": &"hotbar_06",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_73jx2")
+}],
+"loop": true,
+"name": &"hotbar_07",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3c6oh")
+}],
+"loop": true,
+"name": &"hotbar_08",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_33ap3")
+}],
+"loop": true,
+"name": &"hotbar_09",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7r4r")
+}],
+"loop": true,
+"name": &"hotbar_10",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_43isp")
+}],
+"loop": true,
+"name": &"no_selection",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6qw80"]
+size = Vector2(20, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3mjkh"]
+size = Vector2(19, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aoni7"]
+size = Vector2(19, 21)
+
+[node name="InventoryScreen" type="Node2D"]
+script = ExtResource("1_7v45n")
+inventory = ExtResource("2_c4aci")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1000
+sprite_frames = SubResource("SpriteFrames_qysq6")
+animation = &"no_selection"
+
+[node name="Hotbar01Area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotbar01Area"]
+z_index = 1001
+position = Vector2(-86, -42.5)
+shape = SubResource("RectangleShape2D_6qw80")
+
+[node name="Hotbar02Area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotbar02Area"]
+z_index = 1001
+position = Vector2(-66.5, -42.5)
+shape = SubResource("RectangleShape2D_3mjkh")
+
+[node name="Hotbar03Area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotbar03Area"]
+z_index = 1001
+position = Vector2(-47.5, -42.5)
+shape = SubResource("RectangleShape2D_aoni7")
+
+[node name="NoHotbarArea" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NoHotbarArea"]
+polygon = PackedVector2Array(-97, -31, -97, -54, 97, -54, 97, -31, -96, -31, -96, -26, 102, -26, 102, -59, -102, -59, -102, -31)
+
+[connection signal="mouse_entered" from="Hotbar01Area" to="." method="_on_hotbar_01_area_mouse_entered"]
+[connection signal="mouse_entered" from="Hotbar02Area" to="." method="_on_hotbar_02_area_mouse_entered"]
+[connection signal="mouse_entered" from="Hotbar03Area" to="." method="_on_hotbar_03_area_mouse_entered"]
+[connection signal="mouse_entered" from="NoHotbarArea" to="." method="_on_no_hotbar_area_mouse_entered"]

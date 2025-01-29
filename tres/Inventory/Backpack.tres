@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Inventory" load_steps=3 format=3 uid="uid://6hug4c1fqisn"]
+
+[ext_resource type="Resource" uid="uid://cidanha7cnmia" path="res://tres/Inventory/Tools/Pickaxe.tres" id="1_i8mem"]
+[ext_resource type="Script" path="res://scripts/Inventory.gd" id="2_cfpyy"]
+
+[resource]
+script = ExtResource("2_cfpyy")
+items = Array[Resource("res://scripts/Item.gd")]([ExtResource("1_i8mem"), null, null, null, null, null, null, null, null, null, null, null])
+selected_slot = 0
+inventory_open = false

@@ -1,11 +1,11 @@
-[gd_scene load_steps=80 format=3 uid="uid://b68ha3p51sfe3"]
+[gd_scene load_steps=81 format=3 uid="uid://b68ha3p51sfe3"]
 
 [ext_resource type="Texture2D" uid="uid://bfopp07xj580a" path="res://assets/Sprites/Player/Player_New/Player_Anim/Player_Idle_Run_Death_Anim.png" id="1_dxmtx"]
 [ext_resource type="Script" path="res://scenes/Player/Player.gd" id="1_i7byd"]
 [ext_resource type="Texture2D" uid="uid://cggksrmqothxj" path="res://assets/Sprites/Player/Player_New/Weapons/Iron_Tools.png" id="2_p0ar4"]
 [ext_resource type="Resource" uid="uid://dwkcpverg03fs" path="res://tres/PlayerStats.tres" id="2_tjw1w"]
 [ext_resource type="AudioStream" uid="uid://dy0mf64enr5db" path="res://assets/Sound/SFX/grass_footsteps.wav" id="3_j0851"]
-[ext_resource type="Resource" uid="uid://b1vco66yitpn4" path="res://tres/PlayerInventory.tres" id="3_qx4f2"]
+[ext_resource type="Resource" uid="uid://b1vco66yitpn4" path="res://tres/Inventory/PlayerInventory.tres" id="3_qx4f2"]
 [ext_resource type="Texture2D" uid="uid://cxiqt0lfj7loe" path="res://assets/Sprites/Player/Player_New/Player_Anim/Player_Actions_Anim.png" id="4_nmvse"]
 [ext_resource type="AudioStream" uid="uid://cpoaa2vaagxn8" path="res://assets/Sound/SFX/hit_effect.wav" id="6_3h5tr"]
 [ext_resource type="PackedScene" uid="uid://cwfwo5nreqf1f" path="res://scenes/Player/EnergyBar.tscn" id="7_fpkas"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://shi81id6fyeu" path="res://scenes/Player/MoneyBar.tscn" id="9_71jm7"]
 [ext_resource type="PackedScene" uid="uid://cwe2ruhtjjaxe" path="res://scenes/Player/InventoryBar.tscn" id="10_2oapp"]
 [ext_resource type="FontFile" uid="uid://cu5w45rcnjrwx" path="res://assets/Fonts/Daydream.ttf" id="12_jmxef"]
+[ext_resource type="PackedScene" uid="uid://bl5frixsxindd" path="res://tres/Inventory/inventory_ui.tscn" id="15_h8fv7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lqg22"]
 atlas = ExtResource("2_p0ar4")
@@ -610,5 +611,10 @@ disabled = true
 position = Vector2(-49, 14)
 shape = SubResource("CircleShape2D_0sj44")
 disabled = true
+
+[node name="InventoryUI" parent="." instance=ExtResource("15_h8fv7")]
+offset_left = 2.0
+offset_right = 2.0
+scale = Vector2(5, 5)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://gi04qaptehft" path="res://assets/Sprites/UI/Inventory/Inventory_Bar.png" id="1_aoc3e"]
 [ext_resource type="Texture2D" uid="uid://dpcmrahfwo4sw" path="res://assets/Sprites/UI/Inventory/SelectedInventory/selected_slot_1.png" id="1_cblfy"]
 [ext_resource type="Script" path="res://scenes/Player/InventoryBar.gd" id="1_s2p7k"]
-[ext_resource type="Resource" uid="uid://b1vco66yitpn4" path="res://tres/PlayerInventory.tres" id="2_euy3v"]
+[ext_resource type="Resource" uid="uid://b1vco66yitpn4" path="res://tres/Inventory/PlayerInventory.tres" id="2_euy3v"]
 [ext_resource type="Texture2D" uid="uid://blh4he4rslw5o" path="res://assets/Sprites/UI/Inventory/SelectedInventory/selected_slot_0.png" id="3_m2kl1"]
 [ext_resource type="Texture2D" uid="uid://vihplba30ls4" path="res://assets/Sprites/UI/Inventory/SelectedInventory/selected_slot_2.png" id="3_m564p"]
 [ext_resource type="Texture2D" uid="uid://daqe3s3dg1j8e" path="res://assets/Sprites/UI/Inventory/SelectedInventory/selected_slot_3.png" id="4_dilw3"]

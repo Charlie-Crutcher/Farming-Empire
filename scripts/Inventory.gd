@@ -1,10 +1,21 @@
 extends Resource
 class_name Inventory
 
-@export var inventory_size : int = 5
-@export var selected_slot : int = 0
-@export var user_backpack_type = "Leather"
+#Storage Array
+@export var items : Array[Item]
 
+#UI Stuff
+@export var selected_slot : int = 0
+@export var inventory_open : bool = false
+
+func open_inventory_screen():
+	print("Inventory: User opened inventory screen")
+	inventory_open = true
+	
+func close_inventory_screen():
+	print("Inventory: User closed inventory screen")
+	inventory_open = false
+	
 func select_inventory_slot_1():
 	print("User Selected Slot 1")
 	selected_slot = 0

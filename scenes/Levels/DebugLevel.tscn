@@ -1,7 +1,7 @@
 [gd_scene load_steps=60 format=3 uid="uid://cumpssmaaab41"]
 
 [ext_resource type="Script" path="res://scenes/Levels/DebugLevel.gd" id="1_fd2mu"]
-[ext_resource type="TileSet" uid="uid://gvji6cp27siv" path="res://tres/grass_tilemap.tres" id="1_m0jfg"]
+[ext_resource type="TileSet" uid="uid://gvji6cp27siv" path="res://tres/TileMaps/grass_tilemap.tres" id="1_m0jfg"]
 [ext_resource type="PackedScene" uid="uid://b68ha3p51sfe3" path="res://scenes/Player/Player.tscn" id="1_wunwv"]
 [ext_resource type="Texture2D" uid="uid://c7150q64iwf8d" path="res://assets/Sprites/Outdoor decoration/Fences.png" id="2_hgfcl"]
 [ext_resource type="Texture2D" uid="uid://btg2mevdm367c" path="res://assets/Sprites/Outdoor decoration/Fence_Big.png" id="3_82e2m"]
@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bb3xqhlg3k6nu" path="res://assets/Sprites/Outdoor decoration/Lanter_Posts.png" id="12_2verb"]
 [ext_resource type="Texture2D" uid="uid://ca2o74xa6j5jp" path="res://assets/Sprites/Outdoor decoration/Outdoor_Decor.png" id="13_vd0l2"]
 [ext_resource type="Texture2D" uid="uid://di2xiky25du8s" path="res://assets/Sprites/House/Buildings/Houses/House_1_2.png" id="14_gkriq"]
-[ext_resource type="TileSet" uid="uid://ckib0sy73yn4o" path="res://tres/trees_tilemap.tres" id="17_xjtam"]
+[ext_resource type="TileSet" uid="uid://ckib0sy73yn4o" path="res://tres/TileMaps/trees_tilemap.tres" id="17_xjtam"]
 [ext_resource type="PackedScene" uid="uid://paoigy38sohu" path="res://scenes/Farm/SoilTile.tscn" id="18_y8w0c"]
 [ext_resource type="PackedScene" uid="uid://bej2p5psso5ap" path="res://scenes/Objects/FarmObjects/Fences/BigFenceLeftDown.tscn" id="20_dkpcf"]
 [ext_resource type="PackedScene" uid="uid://txkugw80ioli" path="res://scenes/Objects/FarmObjects/Fences/BigFenceCenter.tscn" id="20_wi5wr"]

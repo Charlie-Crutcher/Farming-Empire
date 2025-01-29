@@ -5,6 +5,7 @@ class_name Entity
 @export var stats : Stats
 @export var inventory : Inventory
 
+
 #Animations & Sprites
 @onready var animation_sprite = $AnimatedSprite2D
 @onready var tool_sprite = $ToolSprite2D
@@ -21,6 +22,7 @@ class_name Entity
 @onready var hit_sfx : AudioStreamPlayer = $Hit
 @onready var hotbar_switch_sfx : AudioStreamPlayer = $HotbarSwitch
 
+
 #Timer
 @onready var timer: Timer = $Timer
 
@@ -32,7 +34,7 @@ var player_direction_y: float
 var is_sprinting : bool = false
 var debug_menu
 
-#Inventory Variables
+#Hotbar Variables
 var inventory_slot_1
 var inventory_slot_2
 var inventory_slot_3
@@ -45,6 +47,9 @@ var inventory_slot_9
 var inventory_slot_10
 
 var selected_inventory_slot
+
+# Inventory Screen
+var inventory_open : bool = false
 
 #Action Variables
 var player_action_left
@@ -135,6 +140,14 @@ func _physics_process(_delta):
 		inventory.select_inventory_slot_10()
 		hotbar_switch_sfx.play()
 	
+	# Inventory Screen
+	if Input.is_action_just_pressed("tab") and !inventory_open:
+		inventory.inventory_open = true
+		inventory_open = true
+	elif Input.is_action_just_pressed("tab") and inventory_open:
+		inventory.inventory_open = false
+		inventory_open = false
+		
 	#Adds movement to the player
 	move_and_slide()
 #----------End of Physics Process Function----------#
