@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://b0bytxn5bjy04"]
+
+[ext_resource type="Texture2D" uid="uid://bkapt54q5nvcf" path="res://assets/Sprites/Outdoor decoration/Outdoor_Decor_Animations/Muschroom_Animations/muschroom_1_Anim.png" id="1_2tl5r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v31ax"]
+atlas = ExtResource("1_2tl5r")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_funrj"]
+atlas = ExtResource("1_2tl5r")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8k28k"]
+atlas = ExtResource("1_2tl5r")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qrdfl"]
+atlas = ExtResource("1_2tl5r")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4bp7i"]
+atlas = ExtResource("1_2tl5r")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fa6bf"]
+atlas = ExtResource("1_2tl5r")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ni8nn"]
+animations = [{
+"frames": [{
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_v31ax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_funrj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8k28k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qrdfl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4bp7i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fa6bf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dlsgg"]
+
+[node name="Mushroom01" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ni8nn")
+autoplay = "default"
+frame_progress = 0.648674
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_dlsgg")

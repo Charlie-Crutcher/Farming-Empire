@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ToolItem" load_steps=3 format=3 uid="uid://16wnf5e86qvw"]
+
+[ext_resource type="Script" path="res://scripts/ToolItem.gd" id="1_7jnf6"]
+[ext_resource type="Texture2D" uid="uid://cyvqsudisqma3" path="res://assets/Sprites/Tools/Iron_Hoe.png" id="2_303m4"]
+
+[resource]
+script = ExtResource("1_7jnf6")
+item_name = "Hoe"
+item_description = "For tilling soil."
+texture = ExtResource("2_303m4")

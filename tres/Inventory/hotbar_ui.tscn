@@ -1,0 +1,191 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1vcu0y08ko23"]
+
+[ext_resource type="PackedScene" uid="uid://bxnuyfoi1q0ox" path="res://tres/Inventory/inventory_ui_slot.tscn" id="1_82qvx"]
+[ext_resource type="Texture2D" uid="uid://dmlflhdhqlafp" path="res://assets/Sprites/UI/Inventory/Inventory_select.png" id="2_p5gte"]
+[ext_resource type="Texture2D" uid="uid://ch3ekn25u4p8b" path="res://assets/Sprites/UI/Inventory/bosh.png" id="3_dddty"]
+
+[sub_resource type="GDScript" id="GDScript_ghvhs"]
+script/source = "extends Control
+
+@onready var inventory : Inventory = preload(\"res://tres/Inventory/hotbar_inventory.tres\")
+@onready var slots : Array = $NinePatchRect/GridContainer.get_children()
+@onready var slot_1 = $NinePatchRect/GridContainer/selected01
+@onready var slot_2 = $NinePatchRect/GridContainer/selected02
+@onready var slot_3 = $NinePatchRect/GridContainer/selected03
+@onready var slot_4 = $NinePatchRect/GridContainer/selected04
+@onready var slot_5 = $NinePatchRect/GridContainer/selected05
+@onready var slot_6 = $NinePatchRect/GridContainer/selected06
+@onready var slot_7 = $NinePatchRect/GridContainer/selected07
+@onready var slot_8 = $NinePatchRect/GridContainer/selected08
+@onready var slot_9 = $NinePatchRect/GridContainer/selected09
+@onready var slot_10 = $NinePatchRect/GridContainer/selected10
+
+func _ready():
+	update_slots()
+	
+func update_slots():
+	for i in range(min(inventory.items.size(), slots.size())):
+		slots[i].update(inventory.items[i])
+
+func hide_all():
+	slot_1.visible = false
+	slot_2.hide()
+	slot_3.hide()
+	slot_4.hide()
+	slot_5.hide()
+	slot_6.hide()
+	slot_7.hide()
+	slot_8.hide()
+	slot_9.hide()
+	slot_10.hide()
+
+func _process(delta):
+	match inventory.selected_slot:
+		0:
+			hide_all()
+			slot_1.visible = true
+		1:
+			hide_all()
+			slot_2.visible = true
+		2:
+			hide_all()
+			slot_3.show()
+		3:
+			slot_4.show()
+		4:
+			hide_all()
+			slot_5.show
+		5:
+			hide_all()
+			slot_6.show()
+		6:
+			hide_all()
+			slot_7.show()
+		7:
+			hide_all()
+			slot_8.show()
+		8:
+			hide_all()
+			slot_9.show()
+		9:
+			hide_all()
+			slot_10.show()
+"
+
+[node name="HotbarUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_ghvhs")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 191.0
+offset_bottom = 20.0
+
+[node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
+layout_direction = 2
+layout_mode = 1
+offset_right = 191.0
+offset_bottom = 20.0
+theme_override_constants/h_separation = -1
+columns = 10
+
+[node name="InventoryUISlot" parent="NinePatchRect/GridContainer" instance=ExtResource("1_82qvx")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="InventoryUISlot2" parent="NinePatchRect/GridContainer" instance=ExtResource("1_82qvx")]
+layout_mode = 2
+
+[node name="InventoryUISlot3" parent="NinePatchRect/GridContainer" instance=ExtResource("1_82qvx")]
+layout_mode = 2
+
+[node name="InventoryUISlot4" parent="NinePatchRect/GridContainer" instance=ExtResource("1_82qvx")]
+layout_mode = 2
+
+[node name="InventoryUISlot5" parent="NinePatchRect/GridContainer" instance=ExtResource("1_82qvx")]
+layout_mode = 2
+
+[node name="InventoryUISlot6" parent="NinePatchRect/GridContainer" instance=ExtResource("1_82qvx")]
+layout_mode = 2
+
+[node name="InventoryUISlot7" parent="NinePatchRect/GridContainer" instance=ExtResource("1_82qvx")]
+layout_mode = 2
+
+[node name="InventoryUISlot8" parent="NinePatchRect/GridContainer" instance=ExtResource("1_82qvx")]
+layout_mode = 2
+
+[node name="InventoryUISlot9" parent="NinePatchRect/GridContainer" instance=ExtResource("1_82qvx")]
+layout_mode = 2
+
+[node name="InventoryUISlot10" parent="NinePatchRect/GridContainer" instance=ExtResource("1_82qvx")]
+layout_mode = 2
+
+[node name="Background" type="Sprite2D" parent="NinePatchRect/GridContainer"]
+position = Vector2(95.25, 10)
+scale = Vector2(0.992611, 1)
+texture = ExtResource("3_dddty")
+
+[node name="selected01" type="Sprite2D" parent="NinePatchRect/GridContainer"]
+visible = false
+z_index = 4096
+position = Vector2(10, 10)
+texture = ExtResource("2_p5gte")
+
+[node name="selected02" type="Sprite2D" parent="NinePatchRect/GridContainer"]
+visible = false
+z_index = 4096
+position = Vector2(29, 10)
+texture = ExtResource("2_p5gte")
+
+[node name="selected03" type="Sprite2D" parent="NinePatchRect/GridContainer"]
+visible = false
+z_index = 4096
+position = Vector2(48, 10)
+texture = ExtResource("2_p5gte")
+
+[node name="selected04" type="Sprite2D" parent="NinePatchRect/GridContainer"]
+visible = false
+z_index = 4096
+position = Vector2(67, 10)
+texture = ExtResource("2_p5gte")
+
+[node name="selected05" type="Sprite2D" parent="NinePatchRect/GridContainer"]
+visible = false
+z_index = 4096
+position = Vector2(86, 10)
+texture = ExtResource("2_p5gte")
+
+[node name="selected06" type="Sprite2D" parent="NinePatchRect/GridContainer"]
+visible = false
+z_index = 4096
+position = Vector2(105, 10)
+texture = ExtResource("2_p5gte")
+
+[node name="selected07" type="Sprite2D" parent="NinePatchRect/GridContainer"]
+visible = false
+z_index = 4096
+position = Vector2(124, 10)
+texture = ExtResource("2_p5gte")
+
+[node name="selected08" type="Sprite2D" parent="NinePatchRect/GridContainer"]
+visible = false
+z_index = 4096
+position = Vector2(143, 10)
+texture = ExtResource("2_p5gte")
+
+[node name="selected09" type="Sprite2D" parent="NinePatchRect/GridContainer"]
+visible = false
+z_index = 4096
+position = Vector2(162, 10)
+texture = ExtResource("2_p5gte")
+
+[node name="selected10" type="Sprite2D" parent="NinePatchRect/GridContainer"]
+visible = false
+z_index = 4096
+position = Vector2(181, 10)
+texture = ExtResource("2_p5gte")

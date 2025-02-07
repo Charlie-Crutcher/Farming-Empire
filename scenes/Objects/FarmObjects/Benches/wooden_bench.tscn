@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://blcci58k6qis4"]
+
+[ext_resource type="Texture2D" uid="uid://cadel4wlks3er" path="res://assets/Sprites/Outdoor decoration/Benches.png" id="1_ianak"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70teo"]
+atlas = ExtResource("1_ianak")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yak12"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70teo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ge5n"]
+size = Vector2(30, 16)
+
+[node name="WoodenBench" type="StaticBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_yak12")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_1ge5n")

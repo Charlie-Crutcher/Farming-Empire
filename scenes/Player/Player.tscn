@@ -1,16 +1,18 @@
-[gd_scene load_steps=77 format=3 uid="uid://b68ha3p51sfe3"]
+[gd_scene load_steps=81 format=3 uid="uid://b68ha3p51sfe3"]
 
 [ext_resource type="Texture2D" uid="uid://bfopp07xj580a" path="res://assets/Sprites/Player/Player_New/Player_Anim/Player_Idle_Run_Death_Anim.png" id="1_dxmtx"]
 [ext_resource type="Script" path="res://scenes/Player/Player.gd" id="1_i7byd"]
 [ext_resource type="Texture2D" uid="uid://cggksrmqothxj" path="res://assets/Sprites/Player/Player_New/Weapons/Iron_Tools.png" id="2_p0ar4"]
 [ext_resource type="Resource" uid="uid://dwkcpverg03fs" path="res://tres/PlayerStats.tres" id="2_tjw1w"]
 [ext_resource type="AudioStream" uid="uid://dy0mf64enr5db" path="res://assets/Sound/SFX/grass_footsteps.wav" id="3_j0851"]
-[ext_resource type="Resource" uid="uid://b1vco66yitpn4" path="res://tres/PlayerInventory.tres" id="3_qx4f2"]
+[ext_resource type="Resource" uid="uid://b1vco66yitpn4" path="res://tres/Inventory/PlayerInventory.tres" id="3_qx4f2"]
 [ext_resource type="Texture2D" uid="uid://cxiqt0lfj7loe" path="res://assets/Sprites/Player/Player_New/Player_Anim/Player_Actions_Anim.png" id="4_nmvse"]
 [ext_resource type="AudioStream" uid="uid://cpoaa2vaagxn8" path="res://assets/Sound/SFX/hit_effect.wav" id="6_3h5tr"]
 [ext_resource type="PackedScene" uid="uid://cwfwo5nreqf1f" path="res://scenes/Player/EnergyBar.tscn" id="7_fpkas"]
+[ext_resource type="AudioStream" uid="uid://pitaschqnyhh" path="res://assets/Sound/SFX/hotbar_switch.wav" id="8_wrt3f"]
 [ext_resource type="PackedScene" uid="uid://shi81id6fyeu" path="res://scenes/Player/MoneyBar.tscn" id="9_71jm7"]
-[ext_resource type="PackedScene" uid="uid://cwe2ruhtjjaxe" path="res://scenes/Player/InventoryBar.tscn" id="10_2oapp"]
+[ext_resource type="FontFile" uid="uid://cu5w45rcnjrwx" path="res://assets/Fonts/Daydream.ttf" id="12_jmxef"]
+[ext_resource type="PackedScene" uid="uid://bl5frixsxindd" path="res://tres/Inventory/inventory_ui.tscn" id="15_h8fv7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lqg22"]
 atlas = ExtResource("2_p0ar4")
@@ -128,7 +130,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_a0ib3")
 }],
-"loop": false,
+"loop": true,
 "name": &"pickaxe_horizontal",
 "speed": 8.0
 }, {
@@ -503,6 +505,12 @@ streams_count = 1
 stream_0/stream = ExtResource("6_3h5tr")
 stream_0/weight = 1.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_0sj44"]
+radius = 11.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3n2vk"]
+radius = 56.0089
+
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
 script = ExtResource("1_i7byd")
@@ -516,7 +524,9 @@ position = Vector2(3.05176e-05, 3.05176e-05)
 visible = false
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_40eol")
-animation = &"pickaxe_up"
+animation = &"pickaxe_down"
+frame = 3
+frame_progress = 0.0610465
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
@@ -527,12 +537,13 @@ animation = &"idle"
 position = Vector2(-1.5, 18.25)
 shape = SubResource("RectangleShape2D_k7fqk")
 
-[node name="StateMachine" type="Node" parent="."]
-
 [node name="Footsteps" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_0md2w")
 volume_db = -10.0
 pitch_scale = 2.0
+
+[node name="HotbarSwitch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_wrt3f")
 
 [node name="Hit" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_4207j")
@@ -554,8 +565,61 @@ z_as_relative = false
 position = Vector2(866, -509)
 scale = Vector2(2.5, 2.5)
 
-[node name="InventoryBar" parent="." instance=ExtResource("10_2oapp")]
-position = Vector2(0, 492)
-scale = Vector2(3, 3)
+[node name="EnterText" type="RichTextLabel" parent="."]
+visible = false
+z_index = 999
+clip_contents = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -370.0
+offset_top = 326.0
+offset_right = 373.0
+offset_bottom = 390.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("12_jmxef")
+theme_override_font_sizes/normal_font_size = 48
+text = "Press 'E' To Enter"
+
+[node name="ActionArea" type="Area2D" parent="."]
+
+[node name="ActionCollisionRight" type="CollisionShape2D" parent="ActionArea"]
+position = Vector2(47, 1)
+shape = SubResource("CircleShape2D_0sj44")
+disabled = true
+
+[node name="ActionCollisionBottom" type="CollisionShape2D" parent="ActionArea"]
+position = Vector2(0, 40)
+shape = SubResource("CircleShape2D_0sj44")
+disabled = true
+
+[node name="ActionCollisionTop" type="CollisionShape2D" parent="ActionArea"]
+position = Vector2(-1, -38)
+shape = SubResource("CircleShape2D_0sj44")
+disabled = true
+
+[node name="ActionCollisionLeft" type="CollisionShape2D" parent="ActionArea"]
+position = Vector2(-48, 2)
+shape = SubResource("CircleShape2D_0sj44")
+disabled = true
+
+[node name="InventoryUI" parent="." instance=ExtResource("15_h8fv7")]
+visible = false
+offset_left = 2.0
+offset_right = 2.0
+scale = Vector2(5, 5)
+
+[node name="DialogueArea" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueArea"]
+shape = SubResource("CircleShape2D_3n2vk")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

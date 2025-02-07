@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6yqsogu3ro32"]
+
+[ext_resource type="Texture2D" uid="uid://btg2mevdm367c" path="res://assets/Sprites/Outdoor decoration/Fence_Big.png" id="1_5sowj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udu4n"]
+atlas = ExtResource("1_5sowj")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_go5ai"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udu4n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_weloq"]
+size = Vector2(14, 9)
+
+[node name="BigFenceRightDown" type="StaticBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_go5ai")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_weloq")

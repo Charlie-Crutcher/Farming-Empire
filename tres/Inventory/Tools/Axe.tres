@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ToolItem" load_steps=3 format=3 uid="uid://8eduf7qoyvc2"]
+
+[ext_resource type="Script" path="res://scripts/ToolItem.gd" id="1_jdcf2"]
+[ext_resource type="Texture2D" uid="uid://diw75617vevv7" path="res://assets/Sprites/Tools/Iron_Axe.png" id="2_ow5pc"]
+
+[resource]
+script = ExtResource("1_jdcf2")
+item_name = "Axe"
+item_description = "For chopping wood."
+texture = ExtResource("2_ow5pc")

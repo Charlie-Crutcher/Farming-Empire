@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://pcur7v0wkc5e"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n18p8"]
+
+[node name="SpuceTree" type="StaticBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_n18p8")

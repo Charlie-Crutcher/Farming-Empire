@@ -1,0 +1,79 @@
+[gd_scene load_steps=12 format=3 uid="uid://v6nyt6lu8t02"]
+
+[ext_resource type="Texture2D" uid="uid://c3udbex3naqs3" path="res://assets/Sprites/Outdoor decoration/Outdoor_Decor_Animations/Rock_Animations/Rock_10_Anim.png" id="1_h8vye"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kghqg"]
+atlas = ExtResource("1_h8vye")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eanlh"]
+atlas = ExtResource("1_h8vye")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lffb"]
+atlas = ExtResource("1_h8vye")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwgv1"]
+atlas = ExtResource("1_h8vye")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rogwl"]
+atlas = ExtResource("1_h8vye")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_legfy"]
+atlas = ExtResource("1_h8vye")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smnx8"]
+atlas = ExtResource("1_h8vye")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7b21o"]
+atlas = ExtResource("1_h8vye")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_whrar"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kghqg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eanlh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lffb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwgv1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rogwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_legfy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smnx8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7b21o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6gdhf"]
+
+[node name="Rocks01" type="StaticBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_whrar")
+autoplay = "default"
+frame_progress = 0.335456
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6gdhf")
